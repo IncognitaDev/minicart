@@ -60,7 +60,7 @@ const QuantityBadge: React.FC<Props> = props => {
       {showQuantityBadge && (
         <span
           style={{ userSelect: 'none' }}
-          className={`${handles.minicartQuantityBadge} ${styles.minicartQuantityBadgeDefault} c-on-emphasis absolute t-mini bg-emphasis br4 w1 h1 pa1 flex justify-center items-center lh-solid`}
+          className={`${handles.minicartQuantityBadge} ${itemQuantity === 1 && handles.minicartQuantityBadgeSingleProduct} ${styles.minicartQuantityBadgeDefault} c-on-emphasis absolute t-mini bg-emphasis br4 w1 h1 pa1 flex justify-center items-center lh-solid`}
         >
           {itemQuantity}
         </span>

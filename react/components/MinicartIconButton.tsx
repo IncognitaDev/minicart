@@ -8,6 +8,7 @@ import QuantityBadge from './QuantityBadge'
 export const CSS_HANDLES = [
   'minicartIconContainer',
   'minicartQuantityBadge',
+  'minicartQuantityBadgeSingleProduct'
 ] as const
 
 interface Props {
