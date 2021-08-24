@@ -6,6 +6,9 @@ type MinicartTotalItemsType =
   | 'totalAvailable'
   | 'distinctAvailable'
 
+
+type AwaysTwoDigits = 'always' | 'never' | 'not-empty'
+
 type SlideDirectionType =
   | 'horizontal'
   | 'vertical'

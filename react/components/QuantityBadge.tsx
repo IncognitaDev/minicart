@@ -41,11 +41,12 @@ const countCartItems = (
 interface Props {
   itemCountMode: MinicartTotalItemsType
   quantityDisplay: QuantityDisplayType
+  awaysTwoDigits: AwaysTwoDigits
 }
 
 
 const QuantityBadge: React.FC<Props> = props => { 
-  const { itemCountMode, quantityDisplay = 'not-empty' } = props
+  const { itemCountMode, quantityDisplay = 'not-empty', awaysTwoDigits = false } = props
   const { orderForm, loading }: OrderFormContext = useOrderForm()
   const quantity = countCartItems(itemCountMode, orderForm.items)
   const { handles } = useMinicartCssHandles()
@@ -55,6 +56,8 @@ const QuantityBadge: React.FC<Props> = props => {
   (itemQuantity > 0 && quantityDisplay === 'not-empty') ||
   quantityDisplay === 'always'
 
+  const showTwoItems = (itemQuantity > 0 && awaysTwoDigits === 'not-empty') || awaysTwoDigits === 'always'
+
   return (
     <>
       {showQuantityBadge && (
@@ -62,7 +65,10 @@ const QuantityBadge: React.FC<Props> = props => {
           style={{ userSelect: 'none' }}
           className={`${handles.minicartQuantityBadge} ${itemQuantity === 1 && handles.minicartQuantityBadgeSingleProduct} ${styles.minicartQuantityBadgeDefault} c-on-emphasis absolute t-mini bg-emphasis br4 w1 h1 pa1 flex justify-center items-center lh-solid`}
         >
-          {itemQuantity}
+          {showTwoItems ? itemQuantity.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+          }) : itemQuantity}
         </span>
       )}
     </>

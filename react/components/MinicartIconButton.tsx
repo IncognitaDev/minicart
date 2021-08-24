@@ -15,10 +15,11 @@ interface Props {
   Icon: React.ComponentType
   quantityDisplay: QuantityDisplayType
   itemCountMode: MinicartTotalItemsType
+  awaysTwoDigits: AwaysTwoDigits
 }
 
 const MinicartIconButton: React.FC<Props> = props => {
-  const { Icon, itemCountMode, quantityDisplay } = props
+  const { Icon, itemCountMode, quantityDisplay, awaysTwoDigits } = props
   const { handles } = useMinicartCssHandles()
   const { open, openBehavior, openOnHoverProp } = useMinicartState()
   const dispatch = useMinicartDispatch()
@@ -53,7 +54,7 @@ const MinicartIconButton: React.FC<Props> = props => {
       icon={
         <span className={`${handles.minicartIconContainer} gray relative`}>
           <Icon />
-          <QuantityBadge itemCountMode={itemCountMode} quantityDisplay={quantityDisplay}/>
+          <QuantityBadge itemCountMode={itemCountMode} quantityDisplay={quantityDisplay} awaysTwoDigits={awaysTwoDigits}/>
         </span>
       }
       variation="tertiary"

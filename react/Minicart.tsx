@@ -37,6 +37,7 @@ interface MinicartProps {
   drawerSlideDirection?: SlideDirectionType
   quantityDisplay?: QuantityDisplayType
   itemCountMode?: MinicartTotalItemsType
+  awaysTwoDigits?: AwaysTwoDigits
   backdropMode?: ResponsiveValuesTypes.ResponsiveValue<BackdropMode>
   customPixelEventId?: string
   customPixelEventName?: PixelEventTypes.EventName
@@ -54,6 +55,7 @@ const Minicart: FC<MinicartProps> = ({
   drawerSlideDirection = 'rightToLeft',
   customPixelEventId,
   customPixelEventName,
+  awaysTwoDigits = 'never',
   classes,
 }) => {
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
@@ -76,6 +78,7 @@ const Minicart: FC<MinicartProps> = ({
                 Icon={MinicartIcon}
                 itemCountMode={itemCountMode}
                 quantityDisplay={quantityDisplay}
+                awaysTwoDigits={awaysTwoDigits}
               />
             </MinicartCssHandlesProvider>
           </a>
@@ -98,6 +101,7 @@ const Minicart: FC<MinicartProps> = ({
               Icon={MinicartIcon}
               backdropMode={backdropMode}
               itemCountMode={itemCountMode}
+              awaysTwoDigits={awaysTwoDigits}
               maxDrawerWidth={maxDrawerWidth}
               quantityDisplay={quantityDisplay}
               drawerSlideDirection={drawerSlideDirection}
@@ -111,6 +115,7 @@ const Minicart: FC<MinicartProps> = ({
               Icon={MinicartIcon}
               itemCountMode={itemCountMode}
               quantityDisplay={quantityDisplay}
+              awaysTwoDigits={awaysTwoDigits}
               customPixelEventId={customPixelEventId}
               customPixelEventName={customPixelEventName}
             >

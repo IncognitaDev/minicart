@@ -16,6 +16,7 @@ interface Props {
   drawerSlideDirection: SlideDirectionType
   quantityDisplay: QuantityDisplayType
   itemCountMode: MinicartTotalItemsType
+  awaysTwoDigits: AwaysTwoDigits,
   backdropMode?: ResponsiveValuesTypes.ResponsiveValue<BackdropMode>
   customPixelEventId?: string
   customPixelEventName?: PixelEventTypes.EventName
@@ -26,6 +27,7 @@ const DrawerMode: FC<Props> = ({
   children,
   maxDrawerWidth,
   quantityDisplay,
+  awaysTwoDigits,
   itemCountMode,
   drawerSlideDirection,
   backdropMode = 'visible',
@@ -46,6 +48,7 @@ const DrawerMode: FC<Props> = ({
           Icon={Icon}
           itemCountMode={itemCountMode}
           quantityDisplay={quantityDisplay}
+          awaysTwoDigits={awaysTwoDigits}
         />
       }
     >
