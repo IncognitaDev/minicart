@@ -1,5 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
+
 import { useMinicartCssHandles } from './CssHandlesContext'
 import styles from '../styles.css'
 
@@ -41,38 +42,49 @@ const countCartItems = (
 interface Props {
   itemCountMode: MinicartTotalItemsType
   quantityDisplay: QuantityDisplayType
-  awaysTwoDigits: AwaysTwoDigits
+  alwaysTwoDigits: AlwaysTwoDigits
 }
 
-
-const QuantityBadge: React.FC<Props> = props => { 
-  const { itemCountMode, quantityDisplay = 'not-empty', awaysTwoDigits = false } = props
+const QuantityBadge: React.FC<Props> = props => {
+  const {
+    itemCountMode,
+    quantityDisplay = 'not-empty',
+    alwaysTwoDigits = false,
+  } = props
   const { orderForm, loading }: OrderFormContext = useOrderForm()
   const quantity = countCartItems(itemCountMode, orderForm.items)
   const { handles } = useMinicartCssHandles()
   const itemQuantity = loading ? 0 : quantity
 
   const showQuantityBadge =
-  (itemQuantity > 0 && quantityDisplay === 'not-empty') ||
-  quantityDisplay === 'always'
+    (itemQuantity > 0 && quantityDisplay === 'not-empty') ||
+    quantityDisplay === 'always'
 
-  const showTwoItems = (itemQuantity > 0 && awaysTwoDigits === 'not-empty') || awaysTwoDigits === 'always'
+  const showTwoItems =
+    (itemQuantity > 0 && alwaysTwoDigits === 'not-empty') ||
+    alwaysTwoDigits === 'always'
 
   return (
     <>
       {showQuantityBadge && (
         <span
           style={{ userSelect: 'none' }}
-          className={`${handles.minicartQuantityBadge} ${itemQuantity === 1 && handles.minicartQuantityBadgeSingleProduct} ${styles.minicartQuantityBadgeDefault} c-on-emphasis absolute t-mini bg-emphasis br4 w1 h1 pa1 flex justify-center items-center lh-solid`}
+          className={`${handles.minicartQuantityBadge} ${
+            itemQuantity === 1 && handles.minicartQuantityBadgeSingleProduct
+          } ${
+            styles.minicartQuantityBadgeDefault
+          } c-on-emphasis absolute t-mini bg-emphasis br4 w1 h1 pa1 flex justify-center items-center lh-solid`}
         >
-          {showTwoItems ? itemQuantity.toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-          }) : itemQuantity}
+          {showTwoItems
+            ? itemQuantity.toLocaleString('en-US', {
+                minimumIntegerDigits: 2,
+                useGrouping: false,
+              })
+            : itemQuantity}
         </span>
       )}
     </>
-  );
+  )
 }
 
-export default QuantityBadge;
+export default QuantityBadge

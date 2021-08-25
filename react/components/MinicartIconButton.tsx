@@ -8,18 +8,18 @@ import QuantityBadge from './QuantityBadge'
 export const CSS_HANDLES = [
   'minicartIconContainer',
   'minicartQuantityBadge',
-  'minicartQuantityBadgeSingleProduct'
+  'minicartQuantityBadgeSingleProduct',
 ] as const
 
 interface Props {
   Icon: React.ComponentType
   quantityDisplay: QuantityDisplayType
   itemCountMode: MinicartTotalItemsType
-  awaysTwoDigits: AwaysTwoDigits
+  alwaysTwoDigits: AlwaysTwoDigits
 }
 
 const MinicartIconButton: React.FC<Props> = props => {
-  const { Icon, itemCountMode, quantityDisplay, awaysTwoDigits } = props
+  const { Icon, itemCountMode, quantityDisplay, alwaysTwoDigits } = props
   const { handles } = useMinicartCssHandles()
   const { open, openBehavior, openOnHoverProp } = useMinicartState()
   const dispatch = useMinicartDispatch()
@@ -47,14 +47,16 @@ const MinicartIconButton: React.FC<Props> = props => {
     dispatch({ type: open ? 'CLOSE_MINICART' : 'OPEN_MINICART' })
   }
 
-  
-
   return (
     <ButtonWithIcon
       icon={
         <span className={`${handles.minicartIconContainer} gray relative`}>
           <Icon />
-          <QuantityBadge itemCountMode={itemCountMode} quantityDisplay={quantityDisplay} awaysTwoDigits={awaysTwoDigits}/>
+          <QuantityBadge
+            itemCountMode={itemCountMode}
+            quantityDisplay={quantityDisplay}
+            alwaysTwoDigits={alwaysTwoDigits}
+          />
         </span>
       }
       variation="tertiary"

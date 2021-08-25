@@ -18,7 +18,7 @@ interface Props {
   Icon: React.ComponentType
   quantityDisplay: QuantityDisplayType
   itemCountMode: MinicartTotalItemsType
-  awaysTwoDigits: AwaysTwoDigits
+  alwaysTwoDigits: AlwaysTwoDigits
   customPixelEventId?: string
   customPixelEventName?: PixelEventTypes.EventName
 }
@@ -27,7 +27,7 @@ const PopupMode: FC<Props> = props => {
   const {
     children,
     quantityDisplay,
-    awaysTwoDigits,
+    alwaysTwoDigits,
     Icon,
     itemCountMode,
     customPixelEventId,
@@ -70,7 +70,7 @@ const PopupMode: FC<Props> = props => {
         Icon={Icon}
         itemCountMode={itemCountMode}
         quantityDisplay={quantityDisplay}
-        awaysTwoDigits={awaysTwoDigits}
+        alwaysTwoDigits={alwaysTwoDigits}
       />
       {open && (
         <Overlay>
